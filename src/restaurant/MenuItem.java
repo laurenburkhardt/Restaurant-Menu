@@ -1,5 +1,6 @@
 package restaurant;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -59,6 +60,9 @@ public class MenuItem {
         dateAdded = aDateAdded;
     }
 
+
+
+    ArrayList<MenuItem> menuItems = new ArrayList<>();
 }
 
 
