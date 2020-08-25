@@ -5,21 +5,21 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class MenuItem {
-
+// fields:
     private String name;
     private double price;
     private String description;
     private String category;
     private Date dateAdded = Calendar.getInstance().getTime();
     public boolean newItem = false;
-
+//constructor:
     public MenuItem(String name, double price, String description, String category) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.category = category;
     }
-
+//    getters:
     public String getName() {
         return name;
     }
@@ -39,7 +39,7 @@ public class MenuItem {
     public Date getDateAdded() {
         return dateAdded;
     }
-
+//setters:
     public void setName(String aName) {
         name = aName;
     }
@@ -60,9 +60,6 @@ public class MenuItem {
         dateAdded = aDateAdded;
     }
 
-
-
-    ArrayList<MenuItem> menuItems = new ArrayList<>();
 }
 
 
