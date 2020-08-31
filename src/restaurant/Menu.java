@@ -1,9 +1,7 @@
 package restaurant;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Objects;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Menu {
     private final String name;
@@ -38,6 +36,30 @@ public class Menu {
             menuItems.get(i).toString();
         }
         return null;
+    }
+
+    public static void addItem() {
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("Add new menu item? Y/N");
+        String newItem = input.nextLine();
+
+//        if (newItem == "y") {
+//            System.out.println("New item name:");
+//            String name = input.nextLine();
+//            System.out.println("New item description:");
+//            String description = input.nextLine();
+//            System.out.println("New item price:");
+//            double price = input.nextDouble();
+//            System.out.println("New item category:");
+//            String category = input.nextLine();
+//            new MenuItem(name, price, description, category, LocalDate.now());
+//        } else {
+//
+//        }
+//        public static void main(String args) {
+//            addItem();
+//        }
     }
 }
 
