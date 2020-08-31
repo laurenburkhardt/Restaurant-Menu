@@ -1,25 +1,28 @@
 package restaurant;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Objects;
 
 public class MenuItem {
-// fields:
+
+    // fields:
     private String name;
     private double price;
     private String description;
     private String category;
-    private Date dateAdded = Calendar.getInstance().getTime();
-    public boolean newItem = false;
-//constructor:
-    public MenuItem(String name, double price, String description, String category) {
+    private LocalDate dateAdded = LocalDate.now();
+    public boolean newItem = this.isNew();
+
+    //constructor:
+    public MenuItem(String name, double price, String description, String category, LocalDate dateAdded) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.category = category;
+        this.dateAdded = dateAdded;
     }
-//    getters:
+
+    //    getters:
     public String getName() {
         return name;
     }
@@ -32,14 +35,13 @@ public class MenuItem {
         return description;
     }
 
-    public String getCategory() {
-        return category;
-    }
+    public String getCategory() { return category; }
 
-    public Date getDateAdded() {
+    public LocalDate getDateAdded() {
         return dateAdded;
     }
-//setters:
+
+    //setters:
     public void setName(String aName) {
         name = aName;
     }
@@ -56,10 +58,45 @@ public class MenuItem {
         category = aCategory;
     }
 
-    public void setDateAdded(Date aDateAdded) {
-        dateAdded = aDateAdded;
+    public void setDateAdded(LocalDate aDateAdded) { dateAdded = aDateAdded; }
+
+    public boolean isNew() {
+        LocalDate threeWeeksAgo = LocalDate.now().minusWeeks(3);
+        if (this.dateAdded.isAfter(threeWeeksAgo)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MenuItem)) return false;
+        MenuItem menuItem = (MenuItem) o;
+        return Double.compare(menuItem.getPrice(), getPrice()) == 0 &&
+                newItem == menuItem.newItem &&
+                Objects.equals(getName(), menuItem.getName()) &&
+                Objects.equals(getDescription(), menuItem.getDescription()) &&
+                Objects.equals(getCategory(), menuItem.getCategory()) &&
+                Objects.equals(getDateAdded(), menuItem.getDateAdded());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getPrice(), getDescription(), getCategory(), getDateAdded(), newItem);
+    }
+
+    @Override
+    public String toString() {
+        String print = new String();
+        print = this.name.toUpperCase() + " | " + this.description + " | " + this.price + "\n";
+        if (this.isNew()) {
+            return "*NEW* " + print;
+        } else
+            return print;
+
+    }
 }
 
 
