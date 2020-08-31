@@ -35,7 +35,9 @@ public class MenuItem {
         return description;
     }
 
-    public String getCategory() { return category; }
+    public String getCategory() {
+        return category;
+    }
 
     public LocalDate getDateAdded() {
         return dateAdded;
@@ -58,15 +60,13 @@ public class MenuItem {
         category = aCategory;
     }
 
-    public void setDateAdded(LocalDate aDateAdded) { dateAdded = aDateAdded; }
+    public void setDateAdded(LocalDate aDateAdded) {
+        dateAdded = aDateAdded;
+    }
 
     public boolean isNew() {
         LocalDate threeWeeksAgo = LocalDate.now().minusWeeks(3);
-        if (this.dateAdded.isAfter(threeWeeksAgo)) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.dateAdded.isAfter(threeWeeksAgo);
     }
 
     @Override
@@ -89,13 +89,12 @@ public class MenuItem {
 
     @Override
     public String toString() {
-        String print = new String();
-        print = this.name.toUpperCase() + " | " + this.description + " | " + this.price + "\n";
+        String print = "";
+        print = this.name.toUpperCase() + " | " + this.description + " | $" + this.price + "\n";
         if (this.isNew()) {
             return "*NEW* " + print;
         } else
             return print;
-
     }
 }
 
