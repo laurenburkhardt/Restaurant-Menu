@@ -1,6 +1,8 @@
 package restaurant;
 
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class MenuItem {
@@ -10,16 +12,16 @@ public class MenuItem {
     private double price;
     private String description;
     private String category;
-    private LocalDate dateAdded = LocalDate.now();
+    private Date dateAdded= new Date();
+    //date should be final- wanted to add setter to test isNew()
     public boolean newItem = this.isNew();
 
     //constructor:
-    public MenuItem(String name, double price, String description, String category, LocalDate dateAdded) {
+    public MenuItem(String name, double price, String description, String category) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.category = category;
-        this.dateAdded = dateAdded;
     }
 
     //    getters:
@@ -39,9 +41,6 @@ public class MenuItem {
         return category;
     }
 
-    public LocalDate getDateAdded() {
-        return dateAdded;
-    }
 
     //setters:
     public void setName(String aName) {
@@ -60,13 +59,14 @@ public class MenuItem {
         category = aCategory;
     }
 
-    public void setDateAdded(LocalDate aDateAdded) {
+    public void setDateAdded(Date aDateAdded) {
         dateAdded = aDateAdded;
     }
 
     public boolean isNew() {
-        LocalDate threeWeeksAgo = LocalDate.now().minusWeeks(3);
-        return this.dateAdded.isAfter(threeWeeksAgo);
+        Calendar threeWeeksAgo = Calendar.getInstance();
+        threeWeeksAgo.add(Calendar.DAY_OF_YEAR, -21);
+        return this.dateAdded.after(threeWeeksAgo.getTime());
     }
 
     @Override
@@ -96,6 +96,11 @@ public class MenuItem {
         } else
             return print;
     }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
 }
 
 
