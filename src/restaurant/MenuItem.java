@@ -1,6 +1,5 @@
 package restaurant;
 
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -12,8 +11,7 @@ public class MenuItem {
     private double price;
     private String description;
     private String category;
-    private Date dateAdded= new Date();
-    //date should be final- wanted to add setter to test isNew()
+    private Date dateAdded= new Date(); //dateAdded should be final- wanted to add setter to test isNew()
     public boolean newItem = this.isNew();
 
     //constructor:
@@ -40,7 +38,6 @@ public class MenuItem {
     public String getCategory() {
         return category;
     }
-
 
     //setters:
     public void setName(String aName) {

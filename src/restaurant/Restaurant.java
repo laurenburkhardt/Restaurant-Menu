@@ -1,7 +1,7 @@
 package restaurant;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
+
 
 public class Restaurant {
 
@@ -32,7 +32,7 @@ public class Restaurant {
         System.out.println(chocMeringues.toString());
 
         //Delete an item from the menu, then reprint the menu:
-        menu.getMenuItems().remove(chocMeringues);
+        menu.removeMenuItem(chocMeringues);
         menu.toString();
 
     }
