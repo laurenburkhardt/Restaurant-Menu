@@ -5,14 +5,13 @@ import java.util.ArrayList;
 public class Menu {
     private final String name;
     private ArrayList<MenuItem> menuItems = new ArrayList<>();
-
     public Menu(String name) {
         this.name = name;
     }
 
     @Override
     public String toString() {
-        System.out.println("Menu\nUpdated: " + this.lastUpdated().getDateAdded().toString());
+        System.out.println("Menu\nUpdated: " + this.lastUpdated().getDateAdded() + "\n");
         for (int i = 0; i < menuItems.size(); i++) {
             System.out.println(menuItems.get(i).toString());
         }
@@ -40,6 +39,9 @@ public class Menu {
         if (menuItem != null) {
             if (this.menuItems == null) {
                 this.menuItems = new ArrayList<>();
+            }
+            if (this.menuItems.contains(menuItem)) {
+                this.menuItems.remove(menuItem); // no double items on menu
             }
             this.menuItems.add(menuItem);
         }

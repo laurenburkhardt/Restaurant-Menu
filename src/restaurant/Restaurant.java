@@ -22,8 +22,8 @@ public class Restaurant {
         mozzSticks.setDateAdded(oldDate.getTime());
 //        chocMeringues.setDateAdded(oldDate.getTime());
 
-        // Add items to menu:
-        for (MenuItem menuItem : Arrays.asList(mozzSticks, chocMeringues, chzEnch)) {
+        // Add items to menu and add double item to test addMenuItem()
+        for (MenuItem menuItem : Arrays.asList(mozzSticks, chocMeringues, chzEnch, mozzSticks)) {
             menu.addMenuItem(menuItem);
         }
 
