@@ -15,10 +15,12 @@ public class Restaurant {
         MenuItem chocMeringues = new MenuItem("chocolate meringues", 3.95, "light and crispy cocoa-flavored cookies", "dessert");
         MenuItem chzEnch = new MenuItem("cheese enchiladas", 8.95, "mixed cheeses wrapped in corn tortillas and topped with red sauce, served with rice and beans", "main course");
 
-        // to test isNew()
+        // to test isNew() and lastUpdated()
         Calendar oldDate = Calendar.getInstance();
         oldDate.add(Calendar.DAY_OF_YEAR, -65);
         chzEnch.setDateAdded(oldDate.getTime());
+        mozzSticks.setDateAdded(oldDate.getTime());
+//        chocMeringues.setDateAdded(oldDate.getTime());
 
         // Add items to menu:
         for (MenuItem menuItem : Arrays.asList(mozzSticks, chocMeringues, chzEnch)) {
@@ -29,7 +31,7 @@ public class Restaurant {
         menu.toString();
 
         //Print an individual menu item to the screen:
-        System.out.println(chocMeringues.toString());
+        System.out.println("Special: " + chocMeringues.toString());
 
         //Delete an item from the menu, then reprint the menu:
         menu.removeMenuItem(chocMeringues);

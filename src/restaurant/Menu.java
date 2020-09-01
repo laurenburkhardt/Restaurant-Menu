@@ -12,7 +12,7 @@ public class Menu {
 
     @Override
     public String toString() {
-        System.out.println("Menu\nUpdated: " + this.getDateUpdated().getDateAdded().toString());
+        System.out.println("Menu\nUpdated: " + this.lastUpdated().getDateAdded().toString());
         for (int i = 0; i < menuItems.size(); i++) {
             System.out.println(menuItems.get(i).toString());
         }
@@ -45,7 +45,7 @@ public class Menu {
         }
     }
 
-        public MenuItem getDateUpdated () {
+        public MenuItem lastUpdated () {
             if (menuItems == null || menuItems.isEmpty()) {
                 return null;
             }
